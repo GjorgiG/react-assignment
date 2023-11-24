@@ -9,7 +9,7 @@ function ActorListPageTemplate({ actors, name}) {
 
   let displayedActors = actors
     .filter((a) => {
-      return a.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+      return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     });
 
   const handleChange = (type, value) => {
@@ -19,7 +19,7 @@ function ActorListPageTemplate({ actors, name}) {
   return (
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
-        <Header title={title} />
+        <Header name={name} />
       </Grid>
       <Grid item container spacing={5}>
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
@@ -28,7 +28,7 @@ function ActorListPageTemplate({ actors, name}) {
             nameFilter={nameFilter}
           />
         </Grid>
-        <ActorList action={action} movies={displayedActors}></ActorList>
+        <ActorList actors={displayedActors}></ActorList>
       </Grid>
     </Grid>
   );

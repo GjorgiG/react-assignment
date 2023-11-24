@@ -13,7 +13,6 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png';
 import Avatar from '@mui/material/Avatar';
 import React, { useContext  } from "react";
-// import { MoviesContext } from "../../contexts/moviesContext";
 
 export default function ActorCard({actor}) {
   
@@ -39,7 +38,6 @@ export default function ActorCard({actor}) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {action(actor)}
         <Link to={`/movies/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...

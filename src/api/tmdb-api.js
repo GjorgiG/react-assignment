@@ -122,6 +122,7 @@ export const getMovie = (args) => {
   export const getActorImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
+  
     return fetch(
       `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
     ).then( (response) => {
@@ -130,8 +131,7 @@ export const getMovie = (args) => {
       }
       return response.json();
   
-    })
-    .catch((error) => {
+    }).catch((error) => {
       throw error
    });
   };

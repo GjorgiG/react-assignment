@@ -12,7 +12,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import Watchlist from './pages/watchlistMovies';
-import Actors from './pages/actorDetailsPage';
+import Actors from './pages/actorHomePage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
