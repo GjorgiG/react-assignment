@@ -4,9 +4,9 @@ import PageTemplate from '../components/templateActorListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 
-const actorHomePage = (props) => {
+const ActorHomePage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getActors)
+  const {  data, error, isLoading, isError }  = useQuery('popular', getActors)
 
   if (isLoading) {
     return <Spinner />
@@ -21,9 +21,9 @@ const actorHomePage = (props) => {
 
   return (
     <PageTemplate
-      title='Discover Movies'
+      title='Discover Actors'
       actors={actors}
     />
   );
 };
-export default actorHomePage;
+export default ActorHomePage;
