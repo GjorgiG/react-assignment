@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../headerActorList";
+import ActorHeader from "../headerActorList";
 import FilterCard from "../filterActorsCard";
 import ActorList from "../actorList";
 import Grid from "@mui/material/Grid";
@@ -13,13 +13,14 @@ function ActorListPageTemplate({ actors, name}) {
     });
 
   const handleChange = (type, value) => {
-    if (type === "name") setNameFilter(value)
+    if (type === "name") setNameFilter(value);
+    else setNameFilter(value);
   };
 
   return (
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
-        <Header name={name} />
+        <ActorHeader name={name} />
       </Grid>
       <Grid item container spacing={5}>
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>

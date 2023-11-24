@@ -16,8 +16,6 @@ const ActorHomePage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const actors = data.results;
-  
- 
 
   return (
     <PageTemplate
