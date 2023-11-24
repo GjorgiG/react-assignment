@@ -29,7 +29,7 @@ const ActorDetails = ({ actor }) => {  // Don't miss this!
       </Typography>
 
       <Typography variant="h6" component="p">
-        {actor.overview}
+        {actor.birthday}
       </Typography>
 
       <Paper 
@@ -38,7 +38,7 @@ const ActorDetails = ({ actor }) => {  // Don't miss this!
       >
       </Paper>
       <Paper component="ul" sx={{...root}}>
-        <Chip label={`Released: ${actor.birthday}`} />
+        <Chip label={`Birthday: ${actor.birthday}`} />
       </Paper>
       </>
   )
