@@ -7,7 +7,7 @@ import { getActorImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
-const TemplateActorPage = ({ actor }) => {
+const TemplateActorPage = ({ actor, children }) => {
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: actor.id }],
     getActorImages
@@ -20,7 +20,13 @@ const TemplateActorPage = ({ actor }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const images = data.posters 
+
+  if (!data || !data.profiles || !data.profiles.length === 0) {
+    console.error("Data or data.profile or data.profile.images is undefined:", data);
+    return null; // or return an appropriate fallback component
+  }
+
+  const images = data.profiles;
 
   return (
     <>
@@ -39,12 +45,15 @@ const TemplateActorPage = ({ actor }) => {
                     <ImageListItem key={image.file_path} cols={1}>
                     <img
                         src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                        alt={image.poster_path}
+                        alt={image.profile_path}
                     />
                     </ImageListItem>
                 ))}
             </ImageList>
           </div>
+        </Grid>
+        <Grid item xs={9}>
+          {children}
         </Grid>
       </Grid>
     </>

@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import StarRate from "@mui/icons-material/StarRate";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 
 
@@ -32,14 +28,18 @@ const ActorDetails = ({ actor }) => {  // Don't miss this!
         {actor.biography}
       </Typography>
 
-      <Paper 
-        component="ul" 
-        sx={{...root}}
-      >
-      </Paper>
       <Paper component="ul" sx={{...root}}>
-        <Chip label={`Birthday: ${actor.birthday}`} />
+      <li>
+          <Chip label="Birthday" sx={{...chip}} color="primary" />
+        </li>
+        <li>
+            <Chip label={actor.birthday} sx={{...chip}} />
+          </li>
+
       </Paper>
+
+      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      </Drawer>
       </>
   )
 }
