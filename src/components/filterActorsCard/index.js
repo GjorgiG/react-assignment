@@ -62,12 +62,7 @@ export default function FilterActorsCard(props) {
       variant="filled"
       value={props.nameFilter}
       onChange={handleTextChange}
-    />    
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the actors.
-          <br />
-        </Typography>
+    />
       </CardContent>
     </Card>
   );
