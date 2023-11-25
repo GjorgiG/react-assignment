@@ -6,13 +6,9 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
-import StarRateIcon from "@mui/icons-material/StarRate";
-import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png';
 import Avatar from '@mui/material/Avatar';
-import React, { useContext  } from "react";
 
 export default function ActorCard({actor}) {
   
@@ -28,8 +24,8 @@ export default function ActorCard({actor}) {
       <CardMedia
         sx={{ height: 500 }}
         image={
-          actor.image
-            ? `https://image.tmdb.org/t/p/w500/${actor.image}`
+          actor.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
             : img
         }
       />
@@ -38,7 +34,7 @@ export default function ActorCard({actor}) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        <Link to={`/movies/${actor.id}`}>
+        <Link to={`/actor/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>

@@ -29,7 +29,7 @@ const ActorDetails = ({ actor }) => {  // Don't miss this!
       </Typography>
 
       <Typography variant="h6" component="p">
-        {actor.birthday}
+        {actor.biography}
       </Typography>
 
       <Paper 
