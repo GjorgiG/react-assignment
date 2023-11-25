@@ -23,7 +23,7 @@ const TemplateActorPage = ({ actor, children }) => {
 
   if (!data || !data.profiles || !data.profiles.length === 0) {
     console.error("Data or data.profile or data.profile.images is undefined:", data);
-    return null; // or return an appropriate fallback component
+    return null;
   }
 
   const images = data.profiles;
