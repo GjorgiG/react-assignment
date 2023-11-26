@@ -3,8 +3,9 @@ import ActorHeader from "../headerActorList";
 import FilterCard from "../filterActorsCard";
 import ActorList from "../actorList";
 import Grid from "@mui/material/Grid";
+import Pagination from "../pagination";
 
-function ActorListPageTemplate({ actors, name}) {
+function ActorListPageTemplate({ actors, name, currentPage, totalPages, handlePagination }) {
   const [nameFilter, setNameFilter] = useState("");
 
   let displayedActors = actors
@@ -31,6 +32,7 @@ function ActorListPageTemplate({ actors, name}) {
         </Grid>
         <ActorList actors={displayedActors}></ActorList>
       </Grid>
+      <Pagination currentPage={currentPage} totalPages={totalPages} handlePagination={handlePagination} />
     </Grid>
   );
 }
