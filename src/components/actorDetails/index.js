@@ -25,7 +25,7 @@ const root = {
 const chip = { margin: 0.5 };
 
 
-const ActorDetails = ({ actor,children }) => {  // Don't miss this!
+const ActorDetails = ({ actor }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { data, error, isLoading, isError } = useQuery(
     ["actorCredits", { id: actor.id }],

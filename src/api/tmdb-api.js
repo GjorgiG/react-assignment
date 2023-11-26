@@ -147,7 +147,7 @@ export const getActorCredits = ({ queryKey }) => {
       return response.json();
     })
     .then((data) => {
-      return { cast: data.cast || [] }; // Ensure cast is an array
+      return { cast: data.cast || [] };
     })
     .catch((error) => {
       throw error;

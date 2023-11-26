@@ -9,24 +9,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
-import { MoviesContext } from "../../contexts/moviesContext";
 
 const FilmographyList = ({ movie, action }) => {
-  // You can adapt the context and state logic as needed
-  // For example, if you have a context for favorites and mustWatch
-  // import and use it here
-  // const { favorites, addToFavorites, mustWatch, addToWatchlist } = useContext(MoviesContext);
-
-  // Example logic:
-  // const handleAddToFavorite = (e) => {
-  //   e.preventDefault();
-  //   addToFavorites(movie);
-  // };
-
-  // const handleAddToWatchlist = (e) => {
-  //   e.preventDefault();
-  //   addToWatchlist(movie);
-  // };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
