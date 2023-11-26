@@ -24,6 +24,7 @@ const formControl =
 export default function FilterMoviesCard(props) {
 
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const [selectedFilter, setSelectedFilter] = useState("popularity.desc");
 
   if (isLoading) {
     return <Spinner />;
@@ -39,8 +40,14 @@ export default function FilterMoviesCard(props) {
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value); // NEW
+    if (type === "filter") {
+      setSelectedFilter(value);
+      props.onFilterChange(type, value);
+    } else {
+      props.onUserInput(type, value);
+    }
   };
+  
 
   const handleTextChange = (e, props) => {
     handleChange(e, "name", e.target.value);
@@ -89,6 +96,21 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
+        <FormControl sx={{...formControl}}>
+  <InputLabel id="filter-label">Filter</InputLabel>
+  <Select
+    labelId="filter-label"
+    id="filter-select"
+    defaultValue="popularity.desc"
+    value={selectedFilter}
+    onChange={(e) => handleChange(e, "filter", e.target.value)}
+  >
+    {/* <MenuItem value="popularity.desc">Popularity Desc</MenuItem>*/}
+    <MenuItem value="vote_average.desc">Rating Desc</MenuItem>
+    <MenuItem value="vote_average.asc">Rating Asc</MenuItem>
+  </Select>
+</FormControl>
+
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}

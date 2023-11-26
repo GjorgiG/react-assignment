@@ -5,9 +5,10 @@ import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
 import Pagination from "../pagination";
 
-function MovieListPageTemplate({ movies, title, action, currentPage, totalPages, handlePagination }) {
+function MovieListPageTemplate({ movies, title, action, currentPage, totalPages, handlePagination}) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const [selectedFilter, setSelectedFilter] = useState("popularity.desc");
   const genreId = Number(genreFilter);
 
   let displayedMovies = movies
@@ -18,9 +19,22 @@ function MovieListPageTemplate({ movies, title, action, currentPage, totalPages,
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
 
-  const handleChange = (type, value) => {
-    if (type === "name") setNameFilter(value);
-    else setGenreFilter(value);
+    if (selectedFilter === "popularity.desc") {
+      displayedMovies.sort((a, b) => b.popularity - a.popularity);
+    } else if (selectedFilter === "vote_average.desc") {
+      displayedMovies.sort((a, b) => b.vote_average - a.vote_average);
+    } else if (selectedFilter === "vote_average.asc") {
+      displayedMovies.sort((a, b) => a.vote_average - b.vote_average);
+    }
+
+  const handleFilterChange = (type, value) => {
+    if (type === "filter") {
+      setSelectedFilter(value);
+    } else if (type === "name") {
+      setNameFilter(value);
+    } else if (type === "genre") {
+      setGenreFilter(value);
+    }
   };
 
   return (
@@ -31,9 +45,10 @@ function MovieListPageTemplate({ movies, title, action, currentPage, totalPages,
       <Grid item container spacing={5}>
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
           <FilterCard
-            onUserInput={handleChange}
+            onUserInput={(type, value ) => handleFilterChange(type, value)}
             titleFilter={nameFilter}
             genreFilter={genreFilter}
+            onFilterChange={(type, value) => handleFilterChange(type, value)}
           />
         </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>

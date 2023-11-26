@@ -8,10 +8,18 @@ import PaginationComponent from "../components/pagination";
 
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedFilter, setSelectedFilter] = useState("popularity.desc");
   const {  data, error, isLoading, isError }  = useQuery(['discover', { page: currentPage }], () => getMovies(currentPage));
 
   const handlePagination = (page) => {
     setCurrentPage(page);
+  };
+
+  const handleFilterChange = (type, value) => {
+    if (type === "filter") {
+      setSelectedFilter(value);
+      setCurrentPage(1);
+    }
   };
   
   if (isLoading) {
@@ -40,6 +48,8 @@ const HomePage = (props) => {
         return <AddToFavoritesIcon movie={movie}
         />;
       }}
+      selectedFilter={selectedFilter}
+      onFilterChange={handleFilterChange}
       />
         <PaginationComponent
         currentPage={currentPage}
