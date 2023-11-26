@@ -5,6 +5,13 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import StarRate from "@mui/icons-material/StarRate";
 import PersonIcon from '@mui/icons-material/Person';
+import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
+import { getActorCredits } from "../../api/tmdb-api";
+import Spinner from "../spinner";
+import Grid from "@mui/material/Grid";
+import FilmographyList from "../filmographyCard";
+
 
 
 const root = {
@@ -17,8 +24,24 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const ActorDetails = ({ actor }) => {  // Don't miss this!
+
+const ActorDetails = ({ actor,children }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { data, error, isLoading, isError } = useQuery(
+    ["actorCredits", { id: actor.id }],
+    getActorCredits
+  );
+
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+
+  const filmography = data.cast || [];
 
   return (
     <>
@@ -33,7 +56,7 @@ const ActorDetails = ({ actor }) => {  // Don't miss this!
 
       <Paper component="ul" sx={{...root}}>
       <li>
-          <Chip label="Birthday" sx={{...chip}} color="primary" />
+          <Chip label="Date of Birth" sx={{...chip}} color="primary" />
         </li>
         <li>
             <Chip label={actor.birthday} sx={{...chip}} />
@@ -59,11 +82,26 @@ const ActorDetails = ({ actor }) => {  // Don't miss this!
           label={`${actor.gender}`} />
           </li>
       </Paper>
-    
 
-      
+      <Typography variant="h5" component="h3">
+        Filmography
+      </Typography>
+      <Grid container spacing={2}>
+        {filmography.map((movie) => (
+          <Grid key={movie.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+            <FilmographyList movie={movie} />
+          </Grid>
+        ))}
+      </Grid>
 
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+
+
+      <Drawer
+        anchor="top"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        
       </Drawer>
       </>
   )
