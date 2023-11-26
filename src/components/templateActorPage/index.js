@@ -9,7 +9,7 @@ import Spinner from '../spinner'
 
 const TemplateActorPage = ({ actor, children }) => {
   const { data , error, isLoading, isError } = useQuery(
-    ["images", { id: actor.id }],
+    ["images", { id: actor.id }], // this gets actor images
     getActorImages
   );
 
@@ -21,12 +21,12 @@ const TemplateActorPage = ({ actor, children }) => {
     return <h1>{error.message}</h1>;
   }
 
-  if (!data || !data.profiles || !data.profiles.length === 0) {
+  if (!data || !data.profiles || !data.profiles.length === 0) { // checks for the the data or profile images
     console.error("Data or data.profile or data.profile.images is undefined:", data);
     return null;
   }
 
-  const images = data.profiles;
+  const images = data.profiles; // extracts the images
 
   return (
     <>

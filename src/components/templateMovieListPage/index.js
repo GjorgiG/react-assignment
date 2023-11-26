@@ -19,7 +19,7 @@ function MovieListPageTemplate({ movies, title, action, currentPage, totalPages,
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
 
-    if (selectedFilter === "popularity.desc") {
+    if (selectedFilter === "popularity.desc") { // sorting the movies based on the selected filters
       displayedMovies.sort((a, b) => b.popularity - a.popularity);
     } else if (selectedFilter === "vote_average.desc") {
       displayedMovies.sort((a, b) => b.vote_average - a.vote_average);
@@ -27,7 +27,7 @@ function MovieListPageTemplate({ movies, title, action, currentPage, totalPages,
       displayedMovies.sort((a, b) => a.vote_average - b.vote_average);
     }
 
-  const handleFilterChange = (type, value) => {
+  const handleFilterChange = (type, value) => { // handles the change in the filters
     if (type === "filter") {
       setSelectedFilter(value);
     } else if (type === "name") {

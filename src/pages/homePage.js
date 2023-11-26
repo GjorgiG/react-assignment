@@ -8,8 +8,8 @@ import PaginationComponent from "../components/pagination";
 
 const HomePage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedFilter, setSelectedFilter] = useState("popularity.desc");
-  const {  data, error, isLoading, isError }  = useQuery(['discover', { page: currentPage }], () => getMovies(currentPage));
+  const [selectedFilter, setSelectedFilter] = useState("popularity.desc"); // state for current page and filter
+  const {  data, error, isLoading, isError }  = useQuery(['discover', { page: currentPage }], () => getMovies(currentPage)); // gets movies using useQuery hook
 
   const handlePagination = (page) => {
     setCurrentPage(page);

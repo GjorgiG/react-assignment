@@ -36,8 +36,8 @@ const getGenderString = (gender) => {
 };
 
 const ActorDetails = ({ actor }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const { data, error, isLoading, isError } = useQuery(
+  const [drawerOpen, setDrawerOpen] = useState(false); // manages whether the drawer is open or closed
+  const { data, error, isLoading, isError } = useQuery( // fetches actor credits using useQuery
     ["actorCredits", { id: actor.id }],
     getActorCredits
   );
@@ -51,9 +51,9 @@ const ActorDetails = ({ actor }) => {
     return <h1>{error.message}</h1>;
   }
 
-  const filmography = data.cast || [];
+  const filmography = data.cast || []; // extracts filmography data
 
-  return (
+  return ( // renders the whole actor details component
     <>
       <Typography variant="h5" component="h3">
         Biography

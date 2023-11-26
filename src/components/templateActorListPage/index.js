@@ -13,7 +13,7 @@ function ActorListPageTemplate({ actors, name, currentPage, totalPages, handlePa
       return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     });
 
-  const handleChange = (type, value) => {
+  const handleChange = (type, value) => { // event handler for change in filter
     if (type === "name") setNameFilter(value);
     else setNameFilter(value);
   };

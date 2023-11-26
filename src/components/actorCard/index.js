@@ -8,7 +8,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png';
-import Avatar from '@mui/material/Avatar';
 
 export default function ActorCard({actor}) {
   

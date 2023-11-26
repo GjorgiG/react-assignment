@@ -8,7 +8,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
 const ActorHeader = (props) => {
-  const actor = props.actor;
+  const actor = props.actor; // using props here to get actor data
   const navigate = useNavigate();
 
   return (

@@ -24,7 +24,7 @@ const formControl =
 export default function FilterMoviesCard(props) {
 
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
-  const [selectedFilter, setSelectedFilter] = useState("popularity.desc");
+  const [selectedFilter, setSelectedFilter] = useState("popularity.desc"); // had to use this as the default as otherwise ratingAsc and ratingDesc wouldnt work properly. It's called but never used
 
   if (isLoading) {
     return <Spinner />;
@@ -34,11 +34,11 @@ export default function FilterMoviesCard(props) {
     return <h1>{error.message}</h1>;
   }
   const genres = data.genres;
-  if (genres[0].name !== "All"){
+  if (genres[0].name !== "All"){ // adds All to the list of genres if the first genre option doesnt exist
     genres.unshift({ id: "0", name: "All" });
   }
 
-  const handleChange = (e, type, value) => {
+  const handleChange = (e, type, value) => { // event handler for the change in rating filter
     e.preventDefault();
     if (type === "filter") {
       setSelectedFilter(value);

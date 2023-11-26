@@ -3,7 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 const PaginationComponent = ({ currentPage, totalPages, handlePagination }) => {
-  const handleChange = (event, value) => {
+  const handleChange = (event, value) => { // event handler for changing pages
     handlePagination(value);
   };
 
