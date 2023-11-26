@@ -12,8 +12,6 @@ import Spinner from "../spinner";
 import Grid from "@mui/material/Grid";
 import FilmographyList from "../filmographyCard";
 
-
-
 const root = {
     display: "flex",
     justifyContent: "center",
@@ -24,6 +22,18 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
+const getGenderString = (gender) => {
+  switch (gender) {
+    case 0:
+      return "Not set/specified";
+    case 1:
+      return "Female";
+    case 2:
+      return "Male";
+    case 3:
+      return "Non-binary";
+  }
+};
 
 const ActorDetails = ({ actor }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -79,7 +89,7 @@ const ActorDetails = ({ actor }) => {
           <li>
           <Chip
           icon={<PersonIcon />}
-          label={`${actor.gender}`} />
+          label={getGenderString(actor.gender)} />
           </li>
       </Paper>
 
@@ -93,7 +103,6 @@ const ActorDetails = ({ actor }) => {
           </Grid>
         ))}
       </Grid>
-
 
 
       <Drawer
