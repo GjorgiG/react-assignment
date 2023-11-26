@@ -19,7 +19,7 @@ const PaginationComponent = ({ currentPage, totalPages, handlePagination }) => {
         bottom: 0,
         width: '100%',
         height: '25px',
-        backgroundColor: 'white',
+        backgroundColor: '#FFD3E0',
         padding: '10px',
         boxShadow: '0px -1px 5px 0px rgba(0, 0, 0, 0.1)',
       }}
@@ -30,6 +30,7 @@ const PaginationComponent = ({ currentPage, totalPages, handlePagination }) => {
         onChange={handleChange}
         variant="outlined"
         color="primary"
+        shape="rounded"
       />
     </Stack>
   );
